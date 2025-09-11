@@ -74,6 +74,7 @@ public class AzureBlobConfig {
             if (!containerClient.exists()) {
                 logger.info("Creating new container: {} for {}", containerName, description);
                 containerClient.createIfNotExists();
+                containerClient.setAccessPolicy(PublicAccessType.BLOB, null);
                 logger.info("Successfully created container: {}", containerName);
             } else {
                 logger.info("Container already exists: {}", containerName);
